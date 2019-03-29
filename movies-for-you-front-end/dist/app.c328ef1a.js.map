@@ -1,0 +1,1 @@
+{"version":3,"sources":["app.js"],"names":["document","querySelector","innnerHTML"],"mappings":"AAAAA,QAAQ,CAACC,aAAT,CAAuB,MAAvB,EAA+BC,UAA/B","file":"app.c328ef1a.js","sourceRoot":"..","sourcesContent":["document.querySelector('#app').innnerHTML = `<h1>Hello World</h1>`\r\n"]}
