@@ -210,20 +210,24 @@ function Directors(directors) {
     return "\n                    <li class=\"director\">\n                        <h3 class=\"director__directorName\" id=\"".concat(director.id, "\">").concat(director.directorName, "</h3>                     \n                    </li>\n                    ");
   }).join(''), "\n            ");
 }
-},{}],"js/components/Director.js":[function(require,module,exports) {
+},{}],"js/components/Cinematographer.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = Director;
+exports.default = Cinematographer;
 
-function Director(director) {
-  return "\n        <h2 class=\"director__directorName\">Director: ".concat(director.directorName, "</h2>\n\n        <ul class=\"movies\">\n            <h3>Movies</h3>\n            <li class=\"movie\">").concat(Movies(director.movies), "</li>\n        </ul>\n\n        <section class=\"add__movie\">\n            <input type=\"text\" class=\"add__movieName\" placeholder=\"Movie Name\">\n            <input type=\"text\" class=\"add__image\" placeholder=\"Image URL\">\n            <input type=\"text\" class=\"add__year\" placeholder=\"Movie Release Year\">\n            <button class=\"add__movie__button\">Add Movie</button>\n        </section>\n    ");
+var _Movies = _interopRequireDefault(require("./Movies"));
+
+var _Movie = _interopRequireDefault(require("./Movie"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function Cinematographer(cinematographer) {
+  return "\n\n        <h2 class=\"cinematographer__cinematographerName\">Cinematographer: ".concat(cinematographer.cinematographerName, "</h2>\n\n        <ul class=\"movies\">\n            <h3>Movies</h3>\n            <li class=\"movie\">").concat((0, _Movies.default)(cinematographer.movies), "</li>\n        </ul>\n\n        // <section class=\"add__movie\">\n        //     <input type=\"text\" class=\"add__movieName\" placeholder=\"Movie Name\">\n        //     <input type=\"text\" class=\"add__image\" placeholder=\"Image URL\">\n        //     <input type=\"text\" class=\"add__year\" placeholder=\"Movie Release Year\">\n        //     <button class=\"add__movie__button\">Add Movie</button>\n        // </section>\n    ");
 }
-},{}],"js/components/Cinematographer.js":[function(require,module,exports) {
-
-},{}],"js/components/Movie.js":[function(require,module,exports) {
+},{"./Movies":"js/components/Movies.js","./Movie":"js/components/Movie.js"}],"js/components/Movie.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -238,9 +242,26 @@ var _Cinematographer = _interopRequireDefault(require("./Cinematographer"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function Movie(movie) {
-  return "\n        <h2 class=\"movie__movieName\">Movie: ".concat(movie.movieName, "</h2>\n        <p class=\"movie__year\">Year Released: ").concat(movie.year, "</p>\n        <image src=\"").concat(movie.image, "\">\n        <p class=\"movie__director\">Director: ").concat(movie.director, "</p>\n        <p class=\"movie__cinematographer\">Cinematographer: ").concat(movie.cinematographer, "</p>\n    ");
+  return "\n        <h2 class=\"movie__movieName\">Movie: ".concat(movie.movieName, "</h2>\n        <p class=\"movie__year\">Year Released: ").concat(movie.year, "</p>\n        <image src=\"").concat(movie.image, "\">\n        \n    ");
 }
-},{"./Director":"js/components/Director.js","./Cinematographer":"js/components/Cinematographer.js"}],"js/app.js":[function(require,module,exports) {
+},{"./Director":"js/components/Director.js","./Cinematographer":"js/components/Cinematographer.js"}],"js/components/Director.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = Director;
+
+var _Movies = _interopRequireDefault(require("./Movies"));
+
+var _Movie = _interopRequireDefault(require("./Movie"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function Director(director) {
+  return "\n        <h2 class=\"director__directorName\">Director: ".concat(director.directorName, "</h2>\n\n        <ul class=\"movies\">\n            <h3>Movies</h3>\n            <li class=\"movie\">").concat((0, _Movies.default)(director.movies), "</li>\n        </ul>\n\n        // <section class=\"add__movie\">\n        //     <input type=\"text\" class=\"add__movieName\" placeholder=\"Movie Name\">\n        //     <input type=\"text\" class=\"add__image\" placeholder=\"Image URL\">\n        //     <input type=\"text\" class=\"add__year\" placeholder=\"Movie Release Year\">\n        //     <button class=\"add__movie__button\">Add Movie</button>\n        // </section>\n    ");
+}
+},{"./Movies":"js/components/Movies.js","./Movie":"js/components/Movie.js"}],"js/app.js":[function(require,module,exports) {
 "use strict";
 
 var _apiActions = _interopRequireDefault(require("./utils/api/api-actions"));
@@ -257,6 +278,8 @@ var _Director = _interopRequireDefault(require("./components/Director"));
 
 var _Movie = _interopRequireDefault(require("./components/Movie"));
 
+var _Cinematographer = _interopRequireDefault(require("./components/Cinematographer"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 main();
@@ -270,6 +293,8 @@ function main() {
   navDirectors();
   navCinematographers();
   viewSingleMovie();
+  viewSingleDirector();
+  viewSingleCinematographer();
 }
 
 function navMovies() {
@@ -305,8 +330,34 @@ function navCinematographers() {
 function viewSingleMovie() {
   _eventActions.default.on(getAppContext(), 'click', function () {
     if (event.target.classList.contains('movie__movieName')) {
-      _apiActions.default.getRequest("http://localhost:8080/movies/".concat(event.target.id), function (artist) {
+      _apiActions.default.getRequest("http://localhost:8080/movies/".concat(event.target.id), function (movie) {
         getAppContext().innerHTML = (0, _Movie.default)(movie);
+        console.log(_Movie.default);
+        console.log(movie);
+      });
+    }
+  });
+}
+
+function viewSingleDirector() {
+  _eventActions.default.on(getAppContext(), 'click', function () {
+    if (event.target.classlist.contains('director__directorName')) {
+      _apiActions.default.getRequest("http://localhost:8080/directors/".concat(event.target.id), function (director) {
+        getAppContext().innerHTML = (0, _Director.default)(director);
+        console.log(director);
+        console.log(_Director.default);
+      });
+    }
+  });
+}
+
+function viewSingleCinematographer() {
+  _eventActions.default.on(getAppContext(), 'click', function () {
+    if (event.target.classlist.contains('cinematographer__cinematographerName')) {
+      _apiActions.default.getRequest("http://localhost:8080/cinematographers/".concat(event.target.id), function (cinematographer) {
+        getAppContext().innerHTML = (0, _Cinematographer.default)(cinematographer);
+        console.log(cinematographer);
+        console.log(_Cinematographer.default);
       });
     }
   });
@@ -315,7 +366,7 @@ function viewSingleMovie() {
 function getAppContext() {
   return document.querySelector('#app');
 }
-},{"./utils/api/api-actions":"js/utils/api/api-actions.js","./utils/events/event-actions":"js/utils/events/event-actions.js","./components/Movies":"js/components/Movies.js","./components/Cinematographers":"js/components/Cinematographers.js","./components/Directors":"js/components/Directors.js","./components/Director":"js/components/Director.js","./components/Movie":"js/components/Movie.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./utils/api/api-actions":"js/utils/api/api-actions.js","./utils/events/event-actions":"js/utils/events/event-actions.js","./components/Movies":"js/components/Movies.js","./components/Cinematographers":"js/components/Cinematographers.js","./components/Directors":"js/components/Directors.js","./components/Director":"js/components/Director.js","./components/Movie":"js/components/Movie.js","./components/Cinematographer":"js/components/Cinematographer.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -343,7 +394,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54146" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63813" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
