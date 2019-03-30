@@ -11,6 +11,5 @@
   "license": "ISC",
   "dependencies": {
     "parcel-bundler": "^1.12.3"
-  },
-  "proxy": "http://localhost:8080"
+  }
 }

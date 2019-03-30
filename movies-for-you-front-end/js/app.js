@@ -1,14 +1,17 @@
 import api from './utils/api/api-actions'
+import events from './utils/events/event-actions'
+
+import movies from './components/Movies'
 
 main()
 
 function main() {
-        getAppContext().innerHTML = `<h1>Hellooooooo World</h1>`
-}
+    //getAppContext().innerHTML = `<h1>Hellooooooo World</h1>`
+    api.getRequest('http://localhost:8080/movies', movies => {
+		getAppContext().innerHTML = Movies(movies)
+})
 
 function getAppContext() {
     return document.querySelector('#app')
-    console.log("js working")
 }
-
-//document.querySelector('#app').innnerHTML = `<h1>Hello World</h1>`
+}
