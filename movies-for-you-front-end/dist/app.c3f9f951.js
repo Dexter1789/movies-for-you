@@ -126,7 +126,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 
 function getRequest(location, callback) {
-  fetch(location).then(function (response) {
+  fetch('http://localhost:8080').then(function (response) {
     return response.json();
   }).then(function (data) {
     return callback(data);
@@ -170,6 +170,32 @@ function Movies(movies) {
     return "\n                    <li class=\"movie\">\n                        <h3 class=\"movie__movieName\" id=\"".concat(movie.id, "\">").concat(movie.movieName, "</h3>                     \n                    </li>\n                    ");
   }).join(''), "\n        // </ul>\n        // <section class=\"add__artist\">\n        //     <input type=\"text\" class=\"add__artistName\" placeholder=\"Artist Name\">\n        //     <input type=\"text\" class=\"add__image\" placeholder=\"Image URL\">\n        //     <button class=\"add__artist__button\">Add Artist</button>\n        // </section>\n       ");
 }
+},{}],"js/components/Cinematographers.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = Cinematographers;
+
+function Cinematographers(cinematographers) {
+  return "\n        <ul class=\"cinematographers\">\n            ".concat(cinematographers.map(function (cinematographer) {
+    return "\n                    <li class=\"cinematographer\">\n                        <h3 class=\"cinematographer__cinematographerName\" id=\"".concat(cinematographer.id, "\">").concat(cinematographer.cinematographerName, "</h3>                     \n                    </li>\n                    ");
+  }).join(''), "\n        ");
+}
+},{}],"js/components/Directors.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = Directors;
+
+function Directors(directors) {
+  return "\n        <ul class=\"directors\">\n            ".concat(directors.map(function (director) {
+    return "\n                    <li class=\"director\">\n                        <h3 class=\"director__directorName\" id=\"".concat(direcotr.id, "\">").concat(director.directorName, "</h3>                     \n                    </li>\n                    ");
+  }).join(''), "\n            ");
+}
 },{}],"js/app.js":[function(require,module,exports) {
 "use strict";
 
@@ -179,6 +205,10 @@ var _eventActions = _interopRequireDefault(require("./utils/events/event-actions
 
 var _Movies = _interopRequireDefault(require("./components/Movies"));
 
+var _Cinematographers = _interopRequireDefault(require("./components/Cinematographers"));
+
+var _Directors = _interopRequireDefault(require("./components/Directors"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 main();
@@ -186,14 +216,28 @@ main();
 function main() {
   //getAppContext().innerHTML = `<h1>Hellooooooo World</h1>`
   _apiActions.default.getRequest('http://localhost:8080/movies', function (movies) {
-    getAppContext().innerHTML = Movies(movies);
+    getAppContext().innerHTML = (0, _Movies.default)(movies);
+    navMovies();
+    navDirectors();
   });
+
+  function navMovies() {
+    var movieButton = document.querySelector('.nav__movies');
+
+    _eventActions.default.on(movieButton, 'click', function () {
+      _apiActions.default.getRequest('http://localhost:8080/movies', function (movies) {
+        getAppContext().innerHTML = (0, _Movies.default)(movies);
+      });
+    });
+  }
+
+  function navDirectors() {}
 
   function getAppContext() {
     return document.querySelector('#app');
   }
 }
-},{"./utils/api/api-actions":"js/utils/api/api-actions.js","./utils/events/event-actions":"js/utils/events/event-actions.js","./components/Movies":"js/components/Movies.js"}],"../../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./utils/api/api-actions":"js/utils/api/api-actions.js","./utils/events/event-actions":"js/utils/events/event-actions.js","./components/Movies":"js/components/Movies.js","./components/Cinematographers":"js/components/Cinematographers.js","./components/Directors":"js/components/Directors.js"}],"../../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -221,7 +265,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50734" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55199" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -13,16 +13,13 @@
   
   li {
     list-style: none;
+    color: white;
   }
   
   body {
     background-color: red;
     
   }
-  
-  
-  
-  
   
   header {
     background-color: rgba(0, 0, 15, 0.9); 
@@ -36,7 +33,7 @@
     z-index: 999;
   }
   
-  .menu__button {
+  /* .menu__button {
     border: none;
     background-color: transparent;
     color: white;
@@ -76,12 +73,9 @@
     text-shadow: 1px 1px 50px white;
   }
   
-  
-  
   h1 {
   display: inherit;
   }
-  
   
   .logo__banner {
     text-align: center;
@@ -90,8 +84,6 @@
   .main__subtitle {
     margin: 10px;
   }
-  
-  
   
   .main__text {
     background-color: rgba(0, 0, 15, 0.9);
@@ -105,7 +97,7 @@
   
   /*  (4) Body CSS END */
   
-  footer {
+  /* footer {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -118,10 +110,8 @@
     bottom: 0;
     z-index: 999;
   }
-  
-  /*  (5) Artist Page CSS START */
-  
-  .movie__list, 
+   */
+  /* .movie__list, 
   .director__list,
   .cinematographer__list,
  {
@@ -151,10 +141,10 @@
     1px -1px 1px rgba(255, 255, 255, 0.5), 
     -1px 1px 1px rgba(255, 255, 255, 0.5);
   }
-  
+   */
  
   
-  .director__name {
+  /* .director__name {
     height: 100px;
     width: 200px;
     display: flex;
@@ -193,4 +183,4 @@
     border: none;
   }
   
-  
+    */
