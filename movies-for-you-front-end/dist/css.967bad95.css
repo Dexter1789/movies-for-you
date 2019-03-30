@@ -27,10 +27,10 @@
     flex-direction: columns;
     justify-content: space-between;
     padding: 20px;
-    position: fixed;
+    /* position: fixed; */
     top: 0;
     width: 100%;
-    z-index: 999;
+    /* z-index: 999; */
   }
   
   /* .menu__button {
