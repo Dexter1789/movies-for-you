@@ -63,11 +63,11 @@ function viewSingleMovie() {
 
 function viewSingleDirector() {
     events.on(getAppContext(), 'click', () => {
+        console.log(event.target)
         if(event.target.classlist.contains('director__directorName')) {
             api.getRequest(`http://localhost:8080/directors/${event.target.id}`, director => {
                 getAppContext().innerHTML = Director(director)
-                console.log(director)
-                console.log(Director)
+                
             })
         }
     })

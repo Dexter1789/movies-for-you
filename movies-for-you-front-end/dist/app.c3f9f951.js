@@ -341,11 +341,11 @@ function viewSingleMovie() {
 
 function viewSingleDirector() {
   _eventActions.default.on(getAppContext(), 'click', function () {
+    console.log(event.target);
+
     if (event.target.classlist.contains('director__directorName')) {
       _apiActions.default.getRequest("http://localhost:8080/directors/".concat(event.target.id), function (director) {
         getAppContext().innerHTML = (0, _Director.default)(director);
-        console.log(director);
-        console.log(_Director.default);
       });
     }
   });
@@ -394,7 +394,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63813" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64923" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
