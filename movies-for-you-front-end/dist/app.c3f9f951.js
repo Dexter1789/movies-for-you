@@ -135,8 +135,22 @@ function getRequest(location, callback) {
   });
 }
 
+function postRequest(location, requestBody, callback) {
+  fetch(location, {
+    method: "POST",
+    body: JSON.stringify(requestBody)
+  }).then(function (response) {
+    return response.json();
+  }).then(function (data) {
+    return callback(data);
+  }).catch(function (err) {
+    return console.log(err);
+  });
+}
+
 var _default = {
-  getRequest: getRequest
+  getRequest: getRequest,
+  postRequest: postRequest
 };
 exports.default = _default;
 },{}],"js/utils/events/event-actions.js":[function(require,module,exports) {
@@ -301,7 +315,7 @@ function viewSingleMovie() {
 function getAppContext() {
   return document.querySelector('#app');
 }
-},{"./utils/api/api-actions":"js/utils/api/api-actions.js","./utils/events/event-actions":"js/utils/events/event-actions.js","./components/Movies":"js/components/Movies.js","./components/Cinematographers":"js/components/Cinematographers.js","./components/Directors":"js/components/Directors.js","./components/Director":"js/components/Director.js","./components/Movie":"js/components/Movie.js"}],"../../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./utils/api/api-actions":"js/utils/api/api-actions.js","./utils/events/event-actions":"js/utils/events/event-actions.js","./components/Movies":"js/components/Movies.js","./components/Cinematographers":"js/components/Cinematographers.js","./components/Directors":"js/components/Directors.js","./components/Director":"js/components/Director.js","./components/Movie":"js/components/Movie.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -329,7 +343,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62388" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54146" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -504,5 +518,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","js/app.js"], null)
+},{}]},{},["node_modules/parcel-bundler/src/builtins/hmr-runtime.js","js/app.js"], null)
 //# sourceMappingURL=/app.c3f9f951.js.map

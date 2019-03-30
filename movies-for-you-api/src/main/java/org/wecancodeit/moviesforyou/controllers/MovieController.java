@@ -1,4 +1,4 @@
-package org.wecancodeit.movies.controllers;
+package org.wecancodeit.moviesforyou.controllers;
 
 import java.util.Collection;
 
