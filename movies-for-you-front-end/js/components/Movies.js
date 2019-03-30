@@ -8,11 +8,12 @@ export default function Movies(movies) {
                     </li>
                     `
             }).join('')}
-        // </ul>
-        // <section class="add__artist">
-        //     <input type="text" class="add__artistName" placeholder="Artist Name">
+        </ul>
+        // <section class="add__movie">
+        //     <input type="text" class="add__movieName" placeholder="Movie Name">
         //     <input type="text" class="add__image" placeholder="Image URL">
-        //     <button class="add__artist__button">Add Artist</button>
+        //     <input type="text" class="add__year" placeholder="Movie Release Year">
+        //     <button class="add__movie__button">Add Movie</button>
         // </section>
        `
 }
