@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.wecancodeit.moviesforyou.models.Cinematographer;
 import org.wecancodeit.moviesforyou.repositories.CinematographerRepository;
 import org.wecancodeit.moviesforyou.repositories.MovieRepository;
+
 @CrossOrigin
 @RestController
 public class CinematographerController {

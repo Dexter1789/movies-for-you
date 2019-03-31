@@ -16,7 +16,7 @@ public class Director {
 	private Long id;
 	private String directorName;
 	@OneToMany(mappedBy="director")
-	private Collection<Movie> movies;
+	private Collection<Cinematographer> cinematographers;
 	
 	public Director(String directorName) {
 		this.directorName = directorName;
@@ -32,8 +32,8 @@ public class Director {
 		return directorName;
 	}
 	
-	public Collection<Movie> getMovies() {
-		return movies;
+	public Collection<Cinematographer> getCinematographers() {
+		return cinematographers;
 	}
 }
 
