@@ -66,11 +66,15 @@ function viewSingleMovie() {
 
 function viewSingleDirector() {
     events.on(getAppContext(), 'click', () => {
+<<<<<<< HEAD
         if(event.target.classList.contains('director__directorName')) {
+=======
+        console.log(event.target)
+        if(event.target.classlist.contains('director__directorName')) {
+>>>>>>> a4a7b022851ef4e0852d94e035c45ee8e5d9506e
             api.getRequest(`http://localhost:8080/directors/${event.target.id}`, director => {
                 getAppContext().innerHTML = Director(director)
-                console.log(director)
-                console.log(Director)
+                
             })
         }
     })

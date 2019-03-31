@@ -342,11 +342,15 @@ function viewSingleMovie() {
 
 function viewSingleDirector() {
   _eventActions.default.on(getAppContext(), 'click', function () {
+<<<<<<< HEAD
     if (event.target.classList.contains('director__directorName')) {
+=======
+    console.log(event.target);
+
+    if (event.target.classlist.contains('director__directorName')) {
+>>>>>>> a4a7b022851ef4e0852d94e035c45ee8e5d9506e
       _apiActions.default.getRequest("http://localhost:8080/directors/".concat(event.target.id), function (director) {
         getAppContext().innerHTML = (0, _Director.default)(director);
-        console.log(director);
-        console.log(_Director.default);
       });
     }
   });
@@ -467,7 +471,11 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
+<<<<<<< HEAD
   var ws = new WebSocket(protocol + '://' + hostname + ':' + "60278" + '/');
+=======
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64923" + '/');
+>>>>>>> a4a7b022851ef4e0852d94e035c45ee8e5d9506e
 
   ws.onmessage = function (event) {
     checkedAssets = {};
