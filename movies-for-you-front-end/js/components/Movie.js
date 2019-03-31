@@ -5,7 +5,6 @@ export default function Movie(movie) {
     return `
         <h2 class="movie__movieName">Movie: ${movie.movieName}</h2>
         <p class="movie__year">Year Released: ${movie.year}</p>
-        <image src="${movie.image}">
-        
+        <img src="${movie.imageURL}">
     `
 }

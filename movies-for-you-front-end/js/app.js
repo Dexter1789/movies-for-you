@@ -20,6 +20,9 @@ function main() {
     viewSingleMovie()
     viewSingleDirector()
     viewSingleCinematographer()
+    addDirector()
+    addMovie()
+    addMovieToDirector()
 }
 
 function navMovies() {
@@ -63,7 +66,7 @@ function viewSingleMovie() {
 
 function viewSingleDirector() {
     events.on(getAppContext(), 'click', () => {
-        if(event.target.classlist.contains('director__directorName')) {
+        if(event.target.classList.contains('director__directorName')) {
             api.getRequest(`http://localhost:8080/directors/${event.target.id}`, director => {
                 getAppContext().innerHTML = Director(director)
                 console.log(director)
@@ -73,18 +76,77 @@ function viewSingleDirector() {
     })
 }
 
-    function viewSingleCinematographer() {
-        events.on(getAppContext(), 'click', () => {
-            if(event.target.classlist.contains('cinematographer__cinematographerName')) {
-                api.getRequest(`http://localhost:8080/cinematographers/${event.target.id}`, cinematographer => {
-                    getAppContext().innerHTML = Cinematographer(cinematographer)
-                    console.log(cinematographer)
-                    console.log(Cinematographer)
-                })
-            }
-        })
-    }    
+function viewSingleCinematographer() {
+    events.on(getAppContext(), 'click', () => {
+        if(event.target.classList.contains('cinematographer__cinematographerName')) {
+            api.getRequest(`http://localhost:8080/cinematographers/${event.target.id}`, cinematographer => {
+                getAppContext().innerHTML = Cinematographer(cinematographer)
+                console.log(cinematographer)
+                console.log(Cinematographer)
+            })
+        }
+    })
+} 
 
+function addDirector() {
+    events.on(getAppContext(), 'click', () => {
+        if(event.target.classList.contains('add__director__button')) {
+            const directorName = document.querySelector('.add__directorName').value
+            api.postRequest('http://localhost:8080/directors/add/', {
+                directorName : directorName
+            }, (directors) => getAppContext().innerHTML = Directors(directors))
+        }
+    })
+}
+
+function addMovie() {
+    events.on(getAppContext(), 'click', () => {
+        if(event.target.classList.contains('add__movie__button')) {
+            const movieName = document.querySelector('.add__movieName').value
+            const imageURL = document.querySelector('.add__image').value
+            const year = document.querySelector('.add__year').value
+            const director = document.querySelector('.add__director').value
+            const cinematographer = document.querySelector('.add__cinematographer').value
+            api.postRequest('http://localhost:8080/movies/add', {
+                movieName : movieName,
+                imageURL : imageURL,
+                year : year,
+                director : director,
+                cinematographer : cinematographer
+            }, (movies) => getAppContext().innerHTML = Movies(movies))
+        }
+    })
+}
+
+function addMovieToDirector() {
+    events.on(getAppContext(), 'click', () => {
+        if(event.target.classList.contains('director__add__movie__button')) {
+            const movieName = document.querySelector('.add__movieName').value
+            const imageURL = document.querySelector('.add__image').value
+            const year = document.querySelector('.add__year').value
+            api.postRequest(`http://localhost:8080/movies/${event.target.id}`, {
+                movieName : movieName,
+                imageURL : imageURL,
+                year : year
+            }, (director) => getAppContext().innerHTML = Director(director))
+        }
+    })
+}
+
+function addMovieToDirector() {
+    events.on(getAppContext(), 'click', () => {
+        if(event.target.classList.contains('director__add__movie__button')) {
+            const movieName = document.querySelector('.add__movieName').value
+            const imageURL = document.querySelector('.add__image').value
+            const year = document.querySelector('.add__year').value
+            api.postRequest(`http://localhost:8080/movies/${event.target.id}`, {
+                movieName : movieName,
+                imageURL : imageURL,
+                year : year
+            }, (director) => getAppContext().innerHTML = Director(director))
+        }
+    })
+}
 
 function getAppContext() {
     return document.querySelector('#app')
