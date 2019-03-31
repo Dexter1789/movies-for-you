@@ -1,19 +1,17 @@
-import Movies from './Movies'
-import Movie from './Movie'
+import Cinematographers from './Cinematographers'
+
 export default function Director(director) {
     return `
         <h2 class="director__directorName">Director: ${director.directorName}</h2>
 
-        <ul class="movies">
-            <h3>Movies</h3>
-            <li class="movie">${Movies(director.movies)}</li>
+        <ul class="cinematographers">
+            <h3>Cinematographers:</h3>
+            <li class="cinematographer">${Cinematographers(director.cinematographers)}</li>
         </ul>
 
-        <section class="add__movie">
-            <input type="text" class="add__movieName" placeholder="Movie Name">
-            <input type="text" class="add__image" placeholder="Image URL">
-            <input type="text" class="add__year" placeholder="Movie Release Year">
-            <button class="director__add__movie__button">Add Movie</button>
+        <section class="add__cinematographer">
+            <input type="text" class="add__cinematographerName" placeholder="Cinematographer Name">
+            <button class="add__cinematographer__button">Add Cinematographer</button>
         </section>
     `
 }
