@@ -6,6 +6,7 @@ import Cinematographers from './components/Cinematographers'
 import Directors from './components/Directors'
 import Director from './components/Director'
 import Movie from './components/Movie'
+import Cinematographer from './components/Cinematographer'
 
 main()
 
@@ -17,6 +18,11 @@ function main() {
     navDirectors()
     navCinematographers()
     viewSingleMovie()
+    viewSingleDirector()
+    viewSingleCinematographer()
+    addDirector()
+    addCinematographerToDirector()
+    addMovieToCinematographer()
 }
 
 function navMovies() {
@@ -49,9 +55,71 @@ function navCinematographers() {
 function viewSingleMovie() {
     events.on(getAppContext(), 'click', () => {
         if(event.target.classList.contains('movie__movieName')) {
-            api.getRequest(`http://localhost:8080/movies/${event.target.id}`, artist => {
+            api.getRequest(`http://localhost:8080/movies/${event.target.id}`, movie => {
                 getAppContext().innerHTML = Movie(movie)
+                console.log(Movie)
+                console.log(movie)
             })
+        }
+    })
+}
+
+function viewSingleDirector() {
+    events.on(getAppContext(), 'click', () => {
+        if(event.target.classList.contains('director__directorName')) {
+            api.getRequest(`http://localhost:8080/directors/${event.target.id}`, director => {
+                getAppContext().innerHTML = Director(director)
+                
+            })
+        }
+    })
+}
+
+function viewSingleCinematographer() {
+    events.on(getAppContext(), 'click', () => {
+        if(event.target.classList.contains('cinematographer__cinematographerName')) {
+            api.getRequest(`http://localhost:8080/cinematographers/${event.target.id}`, cinematographer => {
+                getAppContext().innerHTML = Cinematographer(cinematographer)
+                console.log(cinematographer)
+                console.log(Cinematographer)
+            })
+        }
+    })
+} 
+
+function addDirector() {
+    events.on(getAppContext(), 'click', () => {
+        if(event.target.classList.contains('add__director__button')) {
+            const directorName = document.querySelector('.add__directorName').value
+            api.postRequest('http://localhost:8080/directors/add/', {
+                directorName : directorName
+            }, (directors) => getAppContext().innerHTML = Directors(directors))
+        }
+    })
+}
+
+function addCinematographerToDirector() {
+    events.on(getAppContext(), 'click', () => {
+        if(event.target.classList.contains('add__cinematographer__button')) {
+            const cinematographerName = document.querySelector('.add__cinematographerName').value
+            api.postRequest(`http://localhost:8080/cinematographers/add/${event.target.id}`, {
+                cinematographerName : cinematographerName
+            }, (director) => getAppContext().innerHTML = Director(director))
+        }
+    })
+}
+
+function addMovieToCinematographer() {
+    events.on(getAppContext(), 'click', () => {
+        if(event.target.classList.contains('cinematographer__add__movie__button')) {
+            const movieName = document.querySelector('.add__movieName').value
+            const imageURL = document.querySelector('.add__image').value
+            const year = document.querySelector('.add__year').value
+            api.postRequest(`http://localhost:8080/movies/add/${event.target.id}`, {
+                movieName : movieName,
+                imageURL : imageURL,
+                year : year
+            }, (cinematographer) => getAppContext().innerHTML = Cinematographer(cinematographer))
         }
     })
 }
@@ -59,3 +127,5 @@ function viewSingleMovie() {
 function getAppContext() {
     return document.querySelector('#app')
 }
+
+

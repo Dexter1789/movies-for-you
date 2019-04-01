@@ -8,5 +8,6 @@ export default function Cinematographers(cinematographers) {
                     </li>
                     `
             }).join('')}
+        </ul>
         `
 }

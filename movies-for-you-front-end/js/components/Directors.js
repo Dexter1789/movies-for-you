@@ -8,5 +8,10 @@ export default function Directors(directors) {
                     </li>
                     `
             }).join('')}
+        </ul>
+        <section class="add__director">
+            <input type="text" class="add__directorName" placeholder="Director Name">
+            <button class="add__director__button">Add Director</button>
+        </section>
             `
 }
