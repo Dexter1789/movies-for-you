@@ -13,7 +13,7 @@ export default function Cinematographer(cinematographer) {
             <input type="text" class="add__movieName" placeholder="Movie Name">
             <input type="text" class="add__image" placeholder="Image URL">
             <input type="text" class="add__year" placeholder="Movie Release Year">
-            <button class="cinematographer__add__movie__button">Add Movie</button>
+            <button class="cinematographer__add__movie__button" id="${cinematographer.id}">Add Movie</button>
         </section>
     `
 }

@@ -11,7 +11,7 @@ export default function Director(director) {
 
         <section class="add__cinematographer">
             <input type="text" class="add__cinematographerName" placeholder="Cinematographer Name">
-            <button class="add__cinematographer__button">Add Cinematographer</button>
+            <button class="add__cinematographer__button" id="${director.id}">Add Cinematographer</button>
         </section>
     `
 }

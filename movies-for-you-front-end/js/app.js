@@ -22,6 +22,7 @@ function main() {
     viewSingleCinematographer()
     addDirector()
     addCinematographerToDirector()
+    addMovieToCinematographer()
 }
 
 function navMovies() {
@@ -108,7 +109,23 @@ function addCinematographerToDirector() {
     })
 }
 
+function addMovieToCinematographer() {
+    events.on(getAppContext(), 'click', () => {
+        if(event.target.classList.contains('cinematographer__add__movie__button')) {
+            const movieName = document.querySelector('.add__movieName').value
+            const imageURL = document.querySelector('.add__image').value
+            const year = document.querySelector('.add__year').value
+            api.postRequest(`http://localhost:8080/movies/add/${event.target.id}`, {
+                movieName : movieName,
+                imageURL : imageURL,
+                year : year
+            }, (cinematographer) => getAppContext().innerHTML = Cinematographer(cinematographer))
+        }
+    })
+}
+
 function getAppContext() {
     return document.querySelector('#app')
 }
+
 

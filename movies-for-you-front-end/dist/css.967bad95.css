@@ -1,188 +1,95 @@
-
 * {
-    margin: 0px;
-    padding: 0px;
-    box-sizing: border-box;
-    font-family: 'Lato', sans-serif;
-  }
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: 'Lato', sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+li {
+  list-style: none;
+  color: white;
+  padding: 2rem;
+}
+
+body {
+  background-color: red;
+}
+
+header {
+  background-color: rgba(0, 0, 15, 0.9); 
+  padding: 20px;
+  top: 0;
+  width: 100%;
+}
+
+.nav__bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-size: 2rem;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 2rem;
+}
+
+/* .menu__button {
+  border: none;
+  background-color: transparent;
+  color: white;
+  cursor: pointer;
+  font-size: 30px;
+  margin: 10px;
+}
+
+.menu__button:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+} */
+
+.movie__container {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+  background-color: rgba(0, 0, 15, 0.9);
+  text-align: center;
+}
   
-  a {
-    text-decoration: none;
-    color: inherit;
-  }
-  
-  li {
-    list-style: none;
-    color: white;
-  }
-  
-  body {
-    background-color: red;
-    
-  }
-  
-  header {
-    background-color: rgba(0, 0, 15, 0.9); 
-    display: flex;
-    flex-direction: columns;
-    justify-content: space-between;
-    padding: 20px;
-    /* position: fixed; */
-    top: 0;
-    width: 100%;
-    /* z-index: 999; */
-  }
-  
-  /* .menu__button {
-    border: none;
-    background-color: transparent;
-    color: white;
-    cursor: pointer;
-    font-size: 30px;
-    margin: 10px;
-  }
-  
-  .menu__button:hover {
-    cursor: pointer;
-    transform: scale(1.1);
-  }
-  
-  header h1 {
-    font-family: 'IM Fell English', serif;
-    grid-column-start: 2;
-    text-align: center;
-    margin-top: 10px;
-  }
-  
-  .nav__menu {
-    display: none;
-    padding-right: 90px;
-  }
-  
-  .nav__menu ul,
-  .nav__menu li{
-    font-family: 'IM Fell English', serif;
-    font-size: 30px;
-    display: flex;
-    flex-direction: columns;
-    justify-content: space-around;
-  }
-  
-  .nav__menu li:hover {
-    cursor: pointer;
-    text-shadow: 1px 1px 50px white;
-  }
-  
-  h1 {
-  display: inherit;
-  }
-  
-  .logo__banner {
-    text-align: center;
-  }
-  
-  .main__subtitle {
-    margin: 10px;
-  }
-  
-  .main__text {
-    background-color: rgba(0, 0, 15, 0.9);
-    color: white;
-    font-family: lato;
-    font-weight: bold;
-    font-size: 20px;
-    padding: 5px;
-    height: 100%;
-  } 
-  
-  /*  (4) Body CSS END */
-  
-  /* footer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: rgba(0, 0, 15, 0.9);
-    height: 80px;
-    width: 100%;
-    color: white;
-    text-align: center;
-    position: fixed;
-    bottom: 0;
-    z-index: 999;
-  }
-   */
-  /* .movie__list, 
-  .director__list,
-  .cinematographer__list,
- {
-    padding-top: 80px;
-    color: white;
-    flex-wrap: wrap;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  
-  
-  .movie__container {
-    display: flex;
-    flex-direction: column;
-    margin: 20px;
-    background-color: rgba(0, 0, 15, 0.9);
-    text-align: center;
-  }
-  
-  .movie__container:hover {
-    cursor: pointer;
-    transform: scale(1.1);
-    box-shadow: 1px 1px 1px rgba(255, 255, 255, 0.5), 
-    -1px -1px 1px rgba(255, 255, 255, 0.5), 
-    1px -1px 1px rgba(255, 255, 255, 0.5), 
-    -1px 1px 1px rgba(255, 255, 255, 0.5);
-  }
-   */
- 
-  
-  /* .director__name {
-    height: 100px;
-    width: 200px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    font-family: 'IM Fell English', serif;
-    font-size: 30px;
-  }
-  
-  
-  .add-movie {
-    padding-bottom: 120px;
-    padding-top: 20px;
-    padding-left: 20%;
-    padding-right: 20%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
-  
-  input {
-    width: 120px;
-    height: 30px;
-    margin-bottom: 10px;
-  }
-  
-  .add-director__submit {
-    font-family: 'IM Fell English', serif;
-    font-weight: 800;
-    font-size: 20px;
-    width: 120px;
-    height: 30px;
-    background-color: rgba(0, 0, 15, 0.9);
-    color: white;
-    border: none;
-  }
-  
-    */
+/* .director__name {
+  height: 100px;
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-family: 'IM Fell English', serif;
+  font-size: 30px;
+}
+
+
+.add-movie {
+  padding-bottom: 120px;
+  padding-top: 20px;
+  padding-left: 20%;
+  padding-right: 20%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+} */
+
+input {
+  width: 120px;
+  height: 30px;
+  margin-bottom: 10px;
+}
+
 
 /*# sourceMappingURL=/css.967bad95.css.map */
