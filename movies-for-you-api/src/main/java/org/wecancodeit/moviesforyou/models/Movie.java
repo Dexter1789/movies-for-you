@@ -17,20 +17,17 @@ public class Movie {
     private int year;
     @ManyToOne
     @JsonIgnore
-    private Director director;
-    @ManyToOne
-    @JsonIgnore
     private Cinematographer cinematographer;
     
-    public Movie(String movieName, String imageURL, int year, Director director, Cinematographer cinematographer) {
+    public Movie(String movieName, String imageURL, int year, Cinematographer cinematographer) {
         this.movieName = movieName;
         this.imageURL = imageURL;
         this.year = year;
-        this.director = director;
         this.cinematographer = cinematographer;
     }
     
     public Movie() {}
+    
     public Long getId() {
         return id;
     }
@@ -43,10 +40,6 @@ public class Movie {
     
     public int getYear() {
         return year;
-    }
-    
-    public Director getDirector() {
-        return director;
     }
     
     public Cinematographer getCinematographer() {

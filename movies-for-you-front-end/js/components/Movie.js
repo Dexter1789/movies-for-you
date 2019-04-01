@@ -1,5 +1,3 @@
-import Director from './Director'
-import Cinematographer from './Cinematographer'
 
 export default function Movie(movie) {
     return `
